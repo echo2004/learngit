@@ -1,0 +1,26 @@
+Git is a version control system
+Git is free software
+
+在Windows上按照Git
+	从Git官网下载安装文件，按默认选项安装
+	从开始菜单找到Git-Git Bash
+	在Git Bash中输入
+		git config --global user.name "Your name" 
+		git config --global user.email "Your email"
+		#本地的仓库全部使用这个配置管理
+		#不加参数“Your name” 和“Your email”，则查看已经设置好的配置
+创建版本库 repository
+	命令行Git Bash中输入
+		mkdir learngit #当前目录下创建一个仓库
+		cd learngit #切换目录
+		pwd  #返回当前目录
+		
+		git init #将当前目录设为Git管理的仓库
+		ls -ah #显示当前目录下的文件
+提交文件
+	命令行Git Bash中输入
+		touch Filename #新建一个文件
+		git add Filename  #把文件添加到仓库
+		git commit -m "message" #把文件提交到仓库， -m 后边是本次提交的说明
+		
+		
