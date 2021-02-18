@@ -1,5 +1,5 @@
-Git is a version control system
 Git is free software
+Git is a version control system
 
 在Windows上按照Git
 	从Git官网下载安装文件，按默认选项安装
