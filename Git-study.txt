@@ -1,5 +1,5 @@
 Git is free software
-Git is a distributed version control system
+Git is a version control system
 
 在Windows上按照Git
 	从Git官网下载安装文件，按默认选项安装
@@ -22,5 +22,10 @@ Git is a distributed version control system
 		touch Filename #新建一个文件
 		git add Filename  #把文件添加到仓库
 		git commit -m "message" #把文件提交到仓库， -m 后边是本次提交的说明
-		
+修改文件后
+	命令行Git Bash中输入
+		git status  #掌握仓库当前的状态
+		git diff Filename #查看修改的具体内容
+	然后在添加到仓库，提交到仓库
+	
 		
