@@ -29,7 +29,7 @@ Git is a version control system
 	然后在添加到仓库，提交到仓库
 修改版本
 	命令行Git Bash中输入
-		git reset --hard commit-id/HEAD~num #将当前版本返回到commit-id 或HEAD~num 对应的版本
+		git reset --hard commit-id/HEAD~num #将当前版本返回到commit-id 或 HEAD~num 对应的版本
 		git log #查看提交历史，以便确定返回到哪个版本
 		git reflog #查看历史命令，确定回到未来的哪个版本
 		
