@@ -52,6 +52,9 @@ Git is a version control system
 		#origin是远程库的名字，为Git默认，也可以改成别的
 	--把本地库的内容推送到远程库
 		git push -u origin master # -u 第一次推送，将本地master和远程master关联，以后推送可以简化命令 git push origin master
+		
+		git pull origin master#把本地变化链接到远程仓库的分支
+		git push origin master#把本地仓库文件推送到远程仓库
 	--从远程库克隆一个本地库
 		git clone git@github.com:echo2004/learngit.git
 	#github的地址也可以用https://github.com/echo2004/learngit.git ，这是https协议，速度慢，而git@是ssh协议
@@ -70,6 +73,7 @@ Git is a version control system
 		git switch -c dev  #创建并切换到新的分支
 		git switch dev #切换到已有的分支
 		#switch比checkout更容易理解
+解决冲突
 		
 		
 		
