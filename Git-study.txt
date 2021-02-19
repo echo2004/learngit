@@ -32,5 +32,51 @@ Git is a version control system
 		git reset --hard commit-id/HEAD~num #将当前版本返回到commit-id或HEAD~num 对应的版本
 		git log #查看提交历史，以便确定返回到哪个版本
 		git reflog #查看历史命令，确定回到未来的哪个版本
+撤销修改
+	场景1:当工作区某个文件内容修改了，想直接丢弃工作区的修改，用命令 git checkoiut -- filename
+	场景2：当工作区内容修改了，还添加导论暂存区，想丢弃修改，分两步：第一步命令git reset HEAD <file>，回到场景1（去掉暂存区的修改），然后按场景1操作
+	场景3：已经提交了的修改到版本库，想撤销修改，需要版本撤回，get reset --hard commit-d/HEAD~num
+删除文件：
+	当你在本地文件夹删除一个文件后，
+	如果确实要从版本库删除文件，git rm Filename --> git commit -m "说明 "
+	如果是删错了，可以从版本库恢复误删的文件 git checkout -- Filename
+远程仓库 GitHub
+	1、注册账号
+	2、创建SSH Key：Git Bash --> ssh-keygen -t rsa -C "youemail@example.com"，然后回车。
+	完成后，在用户主目录（C:\Users\Administrator）下会生成目录.ssh，里边有两个文件id_rsa和id_rsa.pub，一个是私钥，不能泄露，一个是公钥，可以告诉任何人
+	3、登录GitHub，在账户设置（Account Setting）-->SSH Key页面，点击Add SSH Key，title任意写，Key文本框中黏贴id_rsa.pub的内容，然后点Add Key，添加Key。
+添加远程仓库
+	登录GitHub，右上角Create a new repo（创建新的仓库），在仓库名填入learngit，其他默认。点击Create repository（创建仓库）
+	--关联本地仓库
+		本地learngit仓库下运行命令 git remote add origin git@github.com:echo2004/learngit.git
+		#origin是远程库的名字，为Git默认，也可以改成别的
+	--把本地库的内容推送到远程库
+		git push -u origin master # -u 第一次推送，将本地master和远程master关联，以后推送可以简化命令 git push origin master
+	--从远程库克隆一个本地库
+		git clone git@github.com:echo2004/learngit.git
+	#github的地址也可以用https://github.com/echo2004/learngit.git ，这是https协议，速度慢，而git@是ssh协议
+分支管理
+	创建分支：
+		git branch dev  #创建新的分支dev
+		git checkout dev #切换到分支dev
+		git checkout -b dev #创建并切换到分支dev
+		git branch #查看所有分支，当前分支前*
+		当dev分支工作完成后，切换回master
+		git checkout master #切换回master
+		git merge dev #将dev分支的工作成果合并到master分支
+		git branch -d dev #删除分支 dev
 		
+		新版本中，
+		git switch -c dev  #创建并切换到新的分支
+		git switch dev #切换到已有的分支
+		#switch比checkout更容易理解
+		
+		
+		
+		
+		
+		
+
+	
+	
 		
