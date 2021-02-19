@@ -57,7 +57,9 @@ Git is a version control system
 		git push origin master#把本地仓库文件推送到远程仓库
 	--从远程库克隆一个本地库
 		git clone git@github.com:echo2004/learngit.git
-	#github的地址也可以用https://github.com/echo2004/learngit.git ，这是https协议，速度慢，而git@是ssh协议
+	#github的地址也可以用https://github.com/echo2004/learngit.git ，这是https协议，速度慢，每次需要输入账号密码，而git@是ssh协议
+		git remote -v #查看远程库
+		git remote rm origin #删除远程库
 分支管理
 	创建分支：
 		git branch dev  #创建新的分支dev
@@ -74,12 +76,60 @@ Git is a version control system
 		git switch dev #切换到已有的分支
 		#switch比checkout更容易理解
 解决冲突
+	无法自动合并分支时，手动解决，然后在添加、合并，完成。
+		git log --graph  #查看合并分支图
+分支管理策略
+	git merge --no-ff -m "说明" <将合并的分支> # 生成新的分支，在分支历史上可以看到分支信息
+Bug分支
+	修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
+
+	当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场；
+	git stash #临时存储当前工作现场
+	git stash list #查看存储的工作现场
+	git stash pop  #回复工作现场并删除
+	git stash apply <stash@{0}>#回复工作现场stash@{0}
+	git stash drop  <stash@{0}>#删除工作现场stash@{0}
+	
+	在master分支上修复的bug，想要合并到当前dev分支，可以用git cherry-pick <commit>命令，把bug提交的修改“复制”到当前分支，避免重复劳动。
+	git cherry-pick <commit>	
+	
+	丢弃一个没有合并的分支 
+	git brach -D <分支名>
+多人协作的工作模式通常是这样：
+
+	首先，可以试图用git push origin <branch-name>推送自己的修改；
+
+	如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+
+	如果合并有冲突，则解决冲突，并在本地提交；
+
+	没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！	
 		
-		
-		
-		
-		
-		
+	在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，	
+标签管理
+	创建标签，首先切换到需要打标签的分支，然后git tag <name> 给最新提交的commit打上标签，或者git tag <name> <commit-id>给对应commit打上标签
+	git tag <name> -m "说明" <commit-id> #打上带说明的标签
+	git tag  # 查看标签
+	git show <tag> #显示标签内容
+	
+	git tag -d <name> #删除标签
+	
+	git push origin <tagname> #推送本地标签到远程
+	git push origin --tags #推送全部未推送的本地标签
+	
+	删除远程标签
+	先删除本地标签  git tag -d <tagname>
+	再删除远程   git push origin:refs/tags/<tagname>
+	
+使用GitHub
+	1、Fork开源项目，在本地克隆一个仓库
+	2、从自己账号下clone仓库，克隆到本地
+	3、修改并推送到自己账号下
+	4、在GitHub上发起一个pull request给对方
+使用Gitee
+	git remote rm origin#先删除GitHub的远程库，重新命名
+	git remote add github git@github.com:michaelliao/learngit.git
+	git remote add gitee git@gitee.com:liaoxuefeng/learngit.git
 
 	
 	
